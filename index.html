@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GeoValor Oriente</title>
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIINf9D/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    />
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="topbar">
+        <div>
+            <h1>GeoValor Oriente</h1>
+            <p>Sistema de información geográfica del valor del suelo</p>
+        </div>
+
+        <div class="status">
+            <span id="estadoConexion">● Cargando...</span>
+        </div>
+    </header>
+
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="contenedor">
+
+        <!-- PANEL IZQUIERDO -->
+        <aside class="panel izquierdo">
+
+            <h2>Capas</h2>
+
+            <div class="capa-item">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="checkSuelo"
+                        checked
+                    >
+                    Valores del suelo
+                </label>
+            </div>
+
+            <hr>
+
+            <h2>Información</h2>
+
+            <div class="estadistica">
+                <span>Puntos cargados</span>
+                <strong id="cantidadPuntos">0</strong>
+            </div>
+
+            <div class="estadistica">
+                <span>Valor mínimo</span>
+                <strong id="valorMinimo">$0</strong>
+            </div>
+
+            <div class="estadistica">
+                <span>Valor máximo</span>
+                <strong id="valorMaximo">$0</strong>
+            </div>
+
+            <div class="estadistica">
+                <span>Valor promedio</span>
+                <strong id="valorPromedio">$0</strong>
+            </div>
+
+            <hr>
+
+            <h2>GeoPackage</h2>
+
+            <p id="estadoGpkg" class="mensaje">
+                Cargando automáticamente...
+            </p>
+
+            <button id="btnRecargar" class="boton">
+                ↻ Recargar datos
+            </button>
+
+        </aside>
+
+
+        <!-- MAPA -->
+        <section class="mapa-container">
+
+            <div id="map"></div>
+
+            <div class="leyenda">
+
+                <h3>Valor del suelo</h3>
+
+                <div>
+                    <span class="circulo bajo"></span>
+                    Bajo
+                </div>
+
+                <div>
+                    <span class="circulo medio"></span>
+                    Medio
+                </div>
+
+                <div>
+                    <span class="circulo alto"></span>
+                    Alto
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PANEL DERECHO -->
+        <aside class="panel derecho">
+
+            <h2>Información del punto</h2>
+
+            <div id="informacionPunto">
+
+                <div class="sin-seleccion">
+
+                    <div class="icono-info">ⓘ</div>
+
+                    <p>
+                        Haz clic sobre un punto del mapa
+                        para consultar la información
+                        del terreno.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <!-- Leaflet -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin="">
+    </script>
+
+
+    <!-- GeoPackage JS -->
+    <script src="https://unpkg.com/@ngageoint/geopackage/dist/geopackage.min.js"></script>
+
+
+    <!-- Aplicación -->
+    <script src="app.js"></script>
+
+</body>
+</html>
